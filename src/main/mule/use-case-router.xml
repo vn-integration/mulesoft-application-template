@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:validation="http://www.mulesoft.org/schema/mule/validation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mule/validation/current/mule-validation.xsd">
+	<validation:config name="Validation_Config" doc:name="Validation Config" doc:id="6c9ff74c-be51-463b-b441-40dcef5809f9" />
+	<sub-flow name="use-case-router" doc:id="95c27add-7eb6-4dbf-8589-9e428ff78460" >
+		<ee:transform doc:name="Extract use case" doc:id="ee325364-b2eb-4b0c-bc7e-2c9b1d2b4159" >
+			<ee:message >
+			</ee:message>
+			<ee:variables >
+				<ee:set-variable variableName="useCase" ><![CDATA[common::common::useCaseMatcher({campo: "valor"}, {})]]></ee:set-variable>
+			</ee:variables>
+		</ee:transform>
+		<validation:is-null doc:name="Check use case" doc:id="e77704b6-eeb7-456a-8e53-35b1c234be19" config-ref="Validation_Config" value="#[vars.useCase]" message="Use case not implemented">
+			<error-mapping sourceType="VALIDATION:NOT_NULL" targetType="APP:USE_CASE_NOT_IMPLEMENTED" />
+		</validation:is-null>
+		<logger level="INFO" doc:name="Log use case" doc:id="552d34e8-fd78-43d4-b842-e7890cad6b8c" message='#[common::logger::log("Use case " ++ vars.useCase ++ " matched")]' category="com.morenoamor.mule" />
+		<flow-ref doc:name="Call use case flow" doc:id="a3f6ebbf-ced8-4772-951f-39573e11c35b" name='#["ucf-" ++ vars.useCase]' />
+	</sub-flow>
+</mule>

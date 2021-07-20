@@ -1,0 +1,5 @@
+http:
+  port: "8081"
+
+app:
+  name: Name of the application

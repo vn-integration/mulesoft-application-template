@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="use-case-implementation-test-suite.xml" />
+	<munit:test name="use-case-implementation-test-suite-use-case-implementationFlowTest" doc:id="f4ff1adf-d21f-4051-94f5-e438ffa5edcd" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow" doc:id="68dc81be-596c-4274-aeb6-b0b5499e23dd" name="ucf-create-customer"/>
+		</munit:execution>
+	</munit:test>
+
+
+</mule>

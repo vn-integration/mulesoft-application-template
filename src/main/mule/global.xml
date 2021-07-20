@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<global-property doc:name="Global Property" doc:id="00128bf7-5f5c-49ae-9801-26c7ff53b8b3" name="env" value="local" doc:description="Environment"/>
+	<configuration-properties doc:name="Configuration properties" doc:id="d831634d-0f58-4117-b12b-a32ff33f6cb1" file="application-${env}.yaml" doc:description="Environment application configuration"/>
+	<http:listener-config name="Application_HTTP_Listener" doc:name="HTTP Listener config" doc:id="79c61caf-9f6f-446d-b685-8a9004317658" doc:description="Main application HTTP listener">
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
+	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="e49d8952-bf5c-4a25-9d3c-0fad7f1ba81e" file="application.yaml" doc:description="Master application configuration"/>
+</mule>

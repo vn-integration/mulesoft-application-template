@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<sub-flow name="ucf-create-customer" doc:id="7e372b80-6725-461a-a772-9ef37d562fb0" >
+		<logger level="INFO" doc:name="Logger" doc:id="3e22aa51-3887-4f5e-aa05-7444bf7ea58a" message="#[payload]" category="com.morenoamor.mule.customer"/>
+		<ee:transform doc:name="Build response" doc:id="7aa106ec-8b3e-494e-bb40-bcc21522fdfc">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/java
+---
+{
+	status: "OK"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</sub-flow>
+</mule>

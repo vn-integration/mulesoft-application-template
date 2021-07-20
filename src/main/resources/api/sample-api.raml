@@ -1,0 +1,49 @@
+#%RAML 1.0
+---
+title: API de ejemplo
+baseUri: http://jukebox.api.com
+
+documentation:
+  - content: Descripción del API
+    title: Título del API
+
+version: v1
+
+types:
+  CustomerCreateResponse:
+    type: object
+    properties:
+      id:
+        type: string
+        example: C000001
+        description: Identificador de cliente
+
+  CustomerCreateRequest:
+    type: object
+    properties:
+      nif:
+        type: string
+        required: true
+        example: 00000000A
+      name:
+        type: string
+        required: true
+        example: Mr Mula
+      managed:
+        type: boolean
+        default: false
+        description: Usar el gestor de transacciones
+
+/customers:
+  post:
+    displayName: createCustomer
+    description: Create customer
+    body:
+      application/json:
+        type: CustomerCreateRequest
+    responses:
+      201:
+        description: Customer created
+        body:
+          application/json:
+            type: CustomerCreateResponse
