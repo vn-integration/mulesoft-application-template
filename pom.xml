@@ -13,8 +13,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- <app.runtime>4.3.0-20210609</app.runtime> -->
-        <!-- <app.runtime>4.3.0-20210609</app.runtime> -->
         <app.runtime>4.3.0-20210622</app.runtime>
         <mule.maven.plugin.version>3.5.1</mule.maven.plugin.version>
         <munit.version>2.3.4</munit.version>
@@ -62,10 +60,14 @@
                         <username>${anypoint.username}</username>
                         <password>${anypoint.password}</password>
                         <environment>${cloudhub.environment}</environment>
-                        <applicationName>${cloudhub.app}</applicationName>
-                        <businessGroup>${cloudhub.bg}</businessGroup>
+                        <applicationName>${cloudhub.applicationName}</applicationName>
+                        <businessGroup>${cloudhub.businessGroup}</businessGroup>
                         <workerType>${cloudhub.worker}</workerType>
                         <objectStoreV2>true</objectStoreV2>
+                        <skipDeploymentVerification>${cloudhub.verifyDeployment}</skipDeploymentVerification>
+                        <properties>
+                            <propertyName>propertyValue</propertyName>
+                        </properties>
                     </cloudHubDeployment>
                 </configuration>
             </plugin>
