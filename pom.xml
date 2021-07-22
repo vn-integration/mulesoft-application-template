@@ -45,12 +45,6 @@
                 <version>3.0.0</version>
             </plugin>
             <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <!-- <version>3.8.0.2131</version> -->
-                <version>3.3.0.603</version>
-            </plugin>
-            <plugin>
                 <groupId>org.mule.tools.maven</groupId>
                 <artifactId>mule-maven-plugin</artifactId>
                 <version>${mule.maven.plugin.version}</version>
