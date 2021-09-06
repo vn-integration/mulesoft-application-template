@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--
+        Coverage report is located at: target/site/munit/coverage/
+    -->
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.morenoamor.mulesoft</groupId>
@@ -13,7 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <app.runtime>4.3.0-20210622</app.runtime>
+        <app.runtime>4.3.0-20210719</app.runtime>
         <mule.maven.plugin.version>3.5.1</mule.maven.plugin.version>
         <munit.version>2.3.4</munit.version>
         <mule.version>4.3.0</mule.version>
@@ -76,6 +79,7 @@
                             <propertyName>propertyValue</propertyName>
                         </properties>
                     </cloudHubDeployment>
+                    <classifier>mule-application</classifier>
                 </configuration>
             </plugin>
             <plugin>
@@ -97,8 +101,25 @@
                     <runtimeVersion>${app.runtime}</runtimeVersion>
                     <coverage>
                         <runCoverage>true</runCoverage>
+                        <failBuild>false</failBuild>
+
+                        <requiredApplicationCoverage>100</requiredApplicationCoverage>
+                        <requiredResourceCoverage>100</requiredResourceCoverage>
+                        <requiredFlowCoverage>100</requiredFlowCoverage>
+
+                        <ignoreFlows>
+                            <ignoreFlow>ignored-flow-name</ignoreFlow>
+                        </ignoreFlows>
+
+                        <ignoreFiles>
+                            <ignoreFile>ignored-mile-file.xml</ignoreFile>
+                        </ignoreFiles>
+
                         <formats>
+                            <format>console</format>
                             <format>html</format>
+                            <format>json</format>    
+                            <format>sonar</format>   
                         </formats>
                     </coverage>
                 </configuration>
